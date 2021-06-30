@@ -1,0 +1,471 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from Worksbot-admin.themesease.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Feb 2021 14:44:16 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logistiek Admin</title>
+
+    <!-- ========== COMMON STYLES ========== -->
+    <link rel="stylesheet" href="../../static/Dashboard/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="../../static/Dashboard/css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="../../static/Dashboard/css/animate-css/animate.min.css" media="screen">
+    <link rel="stylesheet" href="../../static/Dashboard/css/lobipanel/lobipanel.min.css" media="screen">
+
+    <!-- ========== PAGE STYLES ========== -->
+    <link rel="stylesheet" href="../../static/Dashboard/css/prism/prism.css" media="screen">
+    <!-- ========== THEME CSS ========== -->
+    <link rel="stylesheet" href="../../static/Dashboard/css/main.css" media="screen">
+    <link rel="stylesheet" href="../../static/Dashboard/css/style.css" media="screen">
+    <!-- ========== MODERNIZR ========== -->
+    <script src="../../static/Dashboard/js/modernizr/modernizr.min.js"></script>
+</head>
+
+<body class="top-navbar-fixed">
+    <div class="main-wrapper">
+
+        <!-- ========== TOP NAVBAR ========== -->
+        <nav class="navbar top-navbar bg-white box-shadow">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header no-padding">
+                        <a class="navbar-brand" href="{% url 'dashboard' %}">
+                            <img src="../../static/Dashboard/images/avatar-1.svg" alt="Logistiek - Admin Template" class="logo">
+                        </a>
+                        <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                				<span class="sr-only">Toggle navigation</span>
+                				<i class="fa fa-ellipsis-v"></i>
+                			</button>
+                        <button type="button" class="navbar-toggle mobile-nav-toggle">
+                				<i class="fa fa-bars"></i>
+                			</button>
+                    </div>
+                    <!-- /.navbar-header -->
+
+                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                        <ul class="nav navbar-nav" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <li class="hidden-sm hidden-xs"><a href="#" class="full-screen-handle"><i class="fa fa-arrows-alt"></i></a></li>
+                            <li class="hidden-sm hidden-xs"><a href="#"><i class="fa fa-search"></i></a></li>
+                        </ul>
+                        <!-- /.nav navbar-nav -->
+
+                        <ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle bg-primary tour-one" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus-circle"></i> Add New <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'add_loadentry' %}"><i class="fa fa-plus-square-o"></i> Load Entry</a></li>
+                                    <li><a href="{% url 'add_customer' %}"><i class="fa fa-plus-square-o"></i> Customer</a></li>
+                                    <li><a href="{% url 'add_shipper' %}"><i class="fa fa-plus-square-o"></i> Shipper</a></li>
+                                    <li><a href="{% url 'add_consignee' %}"><i class="fa fa-plus-square-o"></i> Consignee</a></li>
+                                    <li><a href="{% url 'add_driver' %}"><i class="fa fa-plus-square-o"></i> Driver</a></li>
+                                    <li><a href="{% url 'add_equipments' %}"><i class="fa fa-plus-square-o"></i> Equipment</a></li>
+                                    <li><a href="{% url 'add_dispatch' %}"><i class="fa fa-plus-square-o"></i> Dispatch</a></li>
+                                    <li><a href="{% url 'add_user' %}"><i class="fa fa-plus-square-o"></i> User</a></li>
+                                </ul>
+                            </li>
+                            <!-- /.dropdown -->
+                            <li><a href="#" class=""><i class="fa fa-bell"></i><span class="badge badge-danger">6</span></a></li>
+                            <li><a href="#" class=""><i class="fa fa-comments"></i><span class="badge badge-warning">2</span></a></li>
+                            <li class="dropdown tour-two">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="../../static/Dashboard/images/profile2.jpg" alt="{{ut_data.Firstname}}" class="img-circle profile-img">{{ut_data.Firstname}}<span class="caret"></span></a>
+                                <ul class="dropdown-menu profile-dropdown">
+                                    <li class="profile-menu bg-gray">
+                                        <div class="">
+                                            <img src="http://placehold.it/60/c2c2c2?text=User" alt="{{ut_data.Firstname}}" class="img-circle profile-img">
+                                            <div class="profile-name">
+                                                <h6>{{ut_data.Firstname}}</h6>
+                                                <a href="pages-profile.html">View Profile</a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                                    <li><a href="#"><i class="fa fa-sliders"></i> Account Details</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{% url 'adminlogout' %}" class="color-danger text-center"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- /.nav navbar-nav navbar-right -->
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+        <div class="content-wrapper">
+            <div class="content-container">
+
+                <!-- ========== LEFT SIDEBAR ========== -->
+                <div class="left-sidebar bg-black-300 box-shadow ">
+                    <div class="sidebar-content">
+                        <div class="user-info closed">
+                            <img src="http://placehold.it/90/c2c2c2?text=User" alt="{{ut_data.Firstname}}" class="img-circle profile-img">
+                            <h6 class="title">{{ut_data.Firstname}}</h6>
+                            <small class="info">Admin</small>
+                        </div>
+                        <!-- /.user-info -->
+
+                        <div class="sidebar-nav">
+                            <ul class="side-nav color-gray">
+                                <li class="has-children">
+                                    <a href="#"><i class="fa fa-home"></i> <span>Home</span><i class="fa fa-angle-right arrow"></i></a>
+                                    <ul class="child-nav">
+                                        <li>
+                                            <a href="{% url 'dashboard' %}"><i class=" fa fa-dashboard "></i> <span>Dashboard</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-tasks "></i> <span>Load Entry</span><i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'load_entry' %}"><i class="fa fa-tasks "></i> <span>Entries List</span></a></li>
+                                        <li><a href="{% url 'add_loadentry' %}"><i class="fa fa-plus-square-o "></i> <span>Add Load Entry</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-users "></i> <span>Customers</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'customer' %}"><i class="fa fa-users "></i> <span>Customers List</span></a></li>
+                                        <li><a href="{% url 'add_customer' %}"><i class="fa fa-plus-square-o "></i> <span>Add Customer</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-ship "></i> <span>Shippers</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'shippers' %}"><i class="fa fa-ship "></i> <span>Shippers List</span></a></li>
+                                        <li><a href="{% url 'add_shipper' %}"><i class="fa fa-plus-square-o "></i> <span>Add Shipper</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-th-large "></i> <span>Consignee</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'consignee' %}"><i class="fa fa-th-large "></i> <span>Consignees List</span></a></li>
+                                        <li><a href="{% url 'add_consignee' %}"><i class="fa fa-plus-square-o "></i> <span>Add Consignee</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-truck "></i> <span>Drivers</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'driver' %}"><i class="fa fa-truck "></i> <span>Drivers List</span></a></li>
+                                        <li><a href="{% url 'add_driver' %}"><i class="fa fa-plus-square-o "></i> <span>Add Driver</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-wrench "></i> <span>Equipment</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'equipment' %}"><i class="fa fa-wrench "></i> <span>Equipments List</span></a></li>
+                                        <li><a href="{% url 'add_equipments' %}"><i class="fa fa-plus-square-o "></i> <span>Add Equipment</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-check-square-o "></i> <span>Dispatches</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'dispatch' %}"><i class="fa fa-check-square-o "></i> <span>Dispatches List</span></a></li>
+                                        <li><a href="{% url 'add_dispatch' %}"><i class="fa fa-plus-square-o "></i> <span>Add Dispatch</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-file "></i> <span>Report</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'driver_pay_summary' %}"><i class="fa fa-list-alt "></i> <span>Driver Pay Summary</span></a></li>
+                                        <li><a href="{% url 'dispatch_pay_summary' %}"><i class="fa fa-list-alt "></i> <span>Dispatch Pay Summary</span></a></li>
+                                        <li><a href="{% url 'driver_pay_report' %}"><i class="fa fa-file-archive-o "></i> <span>Driver Pay Report</span></a></li>
+                                        <li><a href="{% url 'customer_revenue_report' %}"><i class="fa fa-file-code-o "></i> <span>Customer Revenue Report</span></a></li>
+                                    </ul>
+                                </li>
+
+
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-user-secret "></i> <span>Users</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'user' %}"><i class="fa fa-bank "></i> <span>Users List</span></a></li>
+                                        <li><a href="{% url 'add_user' %}"><i class="fa fa-bell "></i> <span>Add User</span></a></li>
+                                    </ul>
+                                </li>
+                                <!-- /.side-nav -->
+                            </ul>
+                            <!-- /.side-nav -->
+                        </div>
+                        <!-- /.sidebar-nav -->
+                    </div>
+                    <!-- /.sidebar-content -->
+                </div>
+                <!-- /.left-sidebar -->
+
+                <div class="main-page ">
+                    <div class="container-fluid ">
+                        <div class="row page-title-div ">
+                            <div class="col-md-6 ">
+                                <h4 class="title ">Report</h2>
+                            </div>
+                            <!-- /.col-md-6 -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row breadcrumb-div ">
+                            <div class="col-md-6 ">
+                                <ul class="breadcrumb ">
+                                    <li><a href="{% url 'dashboard' %}"><i class="fa fa-home "></i> Home</a></li>
+                                    <li class="active ">Report</li>
+                                </ul>
+                            </div>
+                            <!-- /.col-md-6 -->
+                            <div class="col-md-6 text-right ">
+                                <a href="# "><i class="fa fa-comments "></i> Talk to us</a>
+                                <a href="# " class="pl-20 "><i class="fa fa-cog "></i> Settings</a>
+                            </div>
+                            <!-- /.col-md-6 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+
+                    <section class="section ">
+                        <div class="container-fluid ">
+                            <div class="row ">
+                                <div class="col-md-12 ">
+                                    <div class="panel ">
+                                        <div class="panel-heading ">
+                                            <div class="panel-title ">
+                                                <div class="col-lg-6 ">
+                                                    <h3>Dispatch Pay Summary</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body ">
+
+                                            <form class="p-20 " action="/dispatch_pay_summary1" method="POST">
+                                                {% csrf_token %}
+
+                                                <div class="row ">
+                                                    <div class="col-md-12 ">
+                                                        <div class="form-group ">
+                                                            <label>Dispatch</label>
+                                                            <select name="dis_fname" id="dis_fname" class="form-control">
+                                                                {% for i in disp %}
+                                                                <option value="{{i.dis_fname}}">{{i.dis_fname}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.col-md-6 -->
+                                                </div>
+                                                <div class="row ">
+                                                    <div class="col-md-12 ">
+                                                        <div class="form-group ">
+                                                            <label>From Date</label>
+                                                            <input type="date" class="form-control " id="from_date" name="from_date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row ">
+                                                    <div class="col-md-12 ">
+                                                        <div class="form-group ">
+                                                            <label>To Date</label>
+                                                            <input type="date" class="form-control " id="to_date" name="to_date">
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.col-md-12 -->
+                                                </div>
+
+                                                <div class="row ">
+                                                    <div class="col-md-12 ">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                        			<input type="checkbox"> I accept <a href="# " class="color-primary ">terms & conditions</a>
+                                                        		</label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.col-md-12 -->
+
+                                                    <div class="col-md-12 ">
+                                                        <div class="btn-group pull-right mt-10 " role="group ">
+                                                            <button type="reset" class="btn btn-gray btn-wide "><i class="fa fa-times "></i>Cancel</button>
+                                                            <button type="submit" class="btn bg-black btn-wide "><i class="fa fa-arrow-right "></i>Submit</button>
+                                                        </div>
+                                                        <!-- /.btn-group -->
+                                                    </div>
+                                                    <!-- /.col-md-12 -->
+                                                </div>
+                                            </form>
+
+                                            <div class="col-md-12 mt-15 src-code ">
+                                                <pre class="language-html "><code class="language-html ">
+&lt;form class="p-20 "&gt;
+    &lt;h5 class="underline mt-n "&gt;Account Info&lt;/h5&gt;
+
+    &lt;div class="row "&gt;
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="name13 "&gt;Full Name&lt;/label&gt;
+                &lt;input type="text " class="form-control " id="name13 " placeholder="Enter Your Full Name "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="username13 "&gt;Username&lt;/label&gt;
+                &lt;input type="text " class="form-control " id="username13 " placeholder="Enter Desired Username "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row "&gt;
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="exampleInputEmail13 "&gt;Email address&lt;/label&gt;
+                &lt;input type="email " class="form-control " id="exampleInputEmail13 " placeholder="Enter Your Email Id "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="contact13 "&gt;Contact Number&lt;/label&gt;
+                &lt;input type="text " class="form-control " id="contact13 " placeholder="Enter Your Mobile Phone Number "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row "&gt;
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="exampleInputPassword13 "&gt;Password&lt;/label&gt;
+                &lt;input type="password " class="form-control " id="exampleInputPassword13 " placeholder="Enter Strong Password "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="exampleInputPassword14 "&gt;Confirm Password&lt;/label&gt;
+                &lt;input type="password " class="form-control " id="exampleInputPassword14 " placeholder="Confirm your password "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+    &lt;/div&gt;
+
+
+    &lt;h5 class="underline mt-30 "&gt;Address Details&lt;/h5&gt;
+
+    &lt;div class="row "&gt;
+        &lt;div class="col-md-12 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="addr "&gt;Street Address&lt;/label&gt;
+                &lt;input type="text " class="form-control " id="addr " placeholder="Enter Your Street Address "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-12 --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row "&gt;
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="city "&gt;City&lt;/label&gt;
+                &lt;input type="text " class="form-control " id="city " placeholder="Enter Your City "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="state "&gt;State&lt;/label&gt;
+                &lt;input type="text " class="form-control " id="state " placeholder="Enter Your State "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row "&gt;
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="country "&gt;Country&lt;/label&gt;
+                &lt;input type="text " class="form-control " id="country " placeholder="Enter Your Country "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+
+        &lt;div class="col-md-6 "&gt;
+            &lt;div class="form-group "&gt;
+                &lt;label for="zip "&gt;Zip Code&lt;/label&gt;
+                &lt;input type="text " class="form-control " id="zip " placeholder="Enter Your Zip Code "&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-6 --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="row "&gt;
+        &lt;div class="col-md-12 "&gt;
+            &lt;div class="checkbox "&gt;
+                &lt;label&gt;
+                    &lt;input type="checkbox "&gt; I accept &lt;a href="# " class="color-primary "&gt;terms & conditions&lt;/a&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-12 --&gt;
+
+        &lt;div class="col-md-12 "&gt;
+            &lt;div class="btn-group pull-right mt-10 " role="group "&gt;
+                &lt;button type="reset " class="btn btn-gray btn-wide "&gt;&lt;i class="fa fa-times "&gt;&lt;/i&gt;Cancel&lt;/button&gt;
+                &lt;button type="button " class="btn bg-black btn-wide "&gt;&lt;i class="fa fa-arrow-right "&gt;&lt;/i&gt;Submit&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;!-- /.btn-group --&gt;
+        &lt;/div&gt;
+        &lt;!-- /.col-md-12 --&gt;
+    &lt;/div&gt;
+
+&lt;/form&gt;
+                                                    </code></pre>
+                                            </div>
+                                            <!-- /.col-md-12 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col-md-12 -->
+                            </div>
+                            <!-- /.row -->
+
+
+                        </div>
+                        <!-- /.container-fluid -->
+                    </section>
+                    <!-- /.section -->
+
+                </div>
+                <!-- /.main-page -->
+
+            </div>
+            <!-- /.content-container -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+    <!-- /.main-wrapper -->
+
+    <!-- ========== COMMON JS FILES ========== -->
+    <script src="../../static/Dashboard/js/jquery/jquery-2.2.4.min.js "></script>
+    <script src="../../static/Dashboard/js/jquery-ui/jquery-ui.min.js "></script>
+    <script src="../../static/Dashboard/js/bootstrap/bootstrap.min.js "></script>
+    <script src="../../static/Dashboard/js/pace/pace.min.js "></script>
+    <script src="../../static/Dashboard/js/lobipanel/lobipanel.min.js "></script>
+    <script src="../../static/Dashboard/js/iscroll/iscroll.js "></script>
+
+    <!-- ========== PAGE JS FILES ========== -->
+    <script src="../../static/Dashboard/js/prism/prism.js "></script>
+    <!-- ========== THEME JS ========== -->
+    <script src="../../static/Dashboard/js/main.js "></script>
+    <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
+</body>
+
+<!-- Mirrored from Worksbot-admin.themesease.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Feb 2021 14:45:17 GMT -->
+
+</html>

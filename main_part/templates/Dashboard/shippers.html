@@ -1,0 +1,407 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from Worksbot-admin.themesease.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Feb 2021 14:44:16 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logistiek Admin</title>
+
+    <!-- ========== COMMON STYLES ========== -->
+    <link rel="stylesheet" href="../../static/Dashboard/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="../../static/Dashboard/css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="../../static/Dashboard/css/animate-css/animate.min.css" media="screen">
+    <link rel="stylesheet" href="../../static/Dashboard/css/lobipanel/lobipanel.min.css" media="screen">
+
+    <!-- ========== PAGE STYLES ========== -->
+    <link rel="stylesheet" href="../../static/Dashboard/css/prism/prism.css" media="screen">
+    <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
+    <link rel="stylesheet" href="../../static/Dashboard/css/toastr/toastr.min.css" media="screen">
+    <link rel="stylesheet" href="../../static/Dashboard/css/icheck/skins/line/blue.css">
+    <link rel="stylesheet" href="../../static/Dashboard/css/icheck/skins/line/red.css">
+    <link rel="stylesheet" href="../../static/Dashboard/css/icheck/skins/line/green.css">
+    <link rel="stylesheet" href="../../static/Dashboard/css/bootstrap-tour/bootstrap-tour.css">
+
+    <!-- ========== THEME CSS ========== -->
+    <link rel="stylesheet" href="../../static/Dashboard/css/main.css" media="screen">
+
+    <!-- ========== MODERNIZR ========== -->
+    <script src="../../static/Dashboard/js/modernizr/modernizr.min.js"></script>
+</head>
+
+<body class="top-navbar-fixed">
+    <div class="main-wrapper">
+
+        <!-- ========== TOP NAVBAR ========== -->
+        <nav class="navbar top-navbar bg-white box-shadow">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header no-padding">
+                        <a class="navbar-brand" href="{% url 'dashboard' %}">
+                            <img src="../../static/Dashboard/images/avatar-1.svg" alt="Logistiek - Admin Template" class="logo">
+                        </a>
+                        <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                				<span class="sr-only">Toggle navigation</span>
+                				<i class="fa fa-ellipsis-v"></i>
+                			</button>
+                        <button type="button" class="navbar-toggle mobile-nav-toggle">
+                				<i class="fa fa-bars"></i>
+                			</button>
+                    </div>
+                    <!-- /.navbar-header -->
+
+                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                        <ul class="nav navbar-nav" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <li class="hidden-sm hidden-xs"><a href="#" class="full-screen-handle"><i class="fa fa-arrows-alt"></i></a></li>
+                            <li class="hidden-sm hidden-xs"><a href="#"><i class="fa fa-search"></i></a></li>
+                        </ul>
+                        <!-- /.nav navbar-nav -->
+
+                        <ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle bg-primary tour-one" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus-circle"></i> Add New <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'add_loadentry' %}"><i class="fa fa-plus-square-o"></i> Load Entry</a></li>
+                                    <li><a href="{% url 'add_customer' %}"><i class="fa fa-plus-square-o"></i> Customer</a></li>
+                                    <li><a href="{% url 'add_shipper' %}"><i class="fa fa-plus-square-o"></i> Shipper</a></li>
+                                    <li><a href="{% url 'add_consignee' %}"><i class="fa fa-plus-square-o"></i> Consignee</a></li>
+                                    <li><a href="{% url 'add_driver' %}"><i class="fa fa-plus-square-o"></i> Driver</a></li>
+                                    <li><a href="{% url 'add_equipments' %}"><i class="fa fa-plus-square-o"></i> Equipment</a></li>
+                                    <li><a href="{% url 'add_dispatch' %}"><i class="fa fa-plus-square-o"></i> Dispatch</a></li>
+                                    <li><a href="{% url 'add_user' %}"><i class="fa fa-plus-square-o"></i> User</a></li>
+                                </ul>
+                            </li>
+                            <!-- /.dropdown -->
+                            <li><a href="#" class=""><i class="fa fa-bell"></i><span class="badge badge-danger">6</span></a></li>
+                            <li><a href="#" class=""><i class="fa fa-comments"></i><span class="badge badge-warning">2</span></a></li>
+                            <li class="dropdown tour-two">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="../../static/Dashboard/images/profile2.jpg" alt="{{ut_data.Firstname}}" class="img-circle profile-img"> {{ut_data.Firstname}} <span class="caret"></span></a>
+                                <ul class="dropdown-menu profile-dropdown">
+                                    <li class="profile-menu bg-gray">
+                                        <div class="">
+                                            <img src="http://placehold.it/60/c2c2c2?text=User" alt="{{ut_data.Firstname}}" class="img-circle profile-img">
+                                            <div class="profile-name">
+                                                <h6>{{ut_data.Firstname}}</h6>
+                                                <a href="pages-profile.html">View Profile</a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                                    <li><a href="#"><i class="fa fa-sliders"></i> Account Details</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a href="{% url 'adminlogout' %}" class=" color-danger text-center "><i class="fa fa-sign-out "></i> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- /.nav navbar-nav navbar-right -->
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+        <div class="content-wrapper ">
+            <div class="content-container ">
+
+                <!-- ========== LEFT SIDEBAR ========== -->
+                <div class="left-sidebar fixed-sidebar bg-black-300 box-shadow tour-three ">
+                    <div class="sidebar-content ">
+                        <div class="user-info closed ">
+                            <img src="http://placehold.it/90/c2c2c2?text=User " alt="{{ut_data.Firstname}} " class="img-circle profile-img ">
+                            <h6 class="title ">{{ut_data.Firstname}}</h6>
+                            <small class="info ">Admin</small>
+                        </div>
+                        <!-- /.user-info -->
+
+                        <div class="sidebar-nav ">
+                            <ul class="side-nav color-gray ">
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-home "></i> <span>Home</span><i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'dashboard' %}"><i class="fa fa-dashboard "></i> <span>Dashboard</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-tasks "></i> <span>Load Entry</span><i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'load_entry' %}"><i class="fa fa-tasks "></i> <span>Entries List</span></a></li>
+                                        <li><a href="{% url 'add_loadentry' %}"><i class="fa fa-plus-square-o "></i> <span>Add Load Entry</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-users "></i> <span>Customers</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'customer' %}"><i class="fa fa-users "></i> <span>Customers List</span></a></li>
+                                        <li><a href="{% url 'add_customer' %}"><i class="fa fa-plus-square-o "></i> <span>Add Customer</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-ship "></i> <span>Shippers</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'shippers' %}"><i class="fa fa-ship "></i> <span>Shippers List</span></a></li>
+                                        <li><a href="{% url 'add_shipper' %}"><i class="fa fa-plus-square-o "></i> <span>Add Shipper</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-th-large "></i> <span>Consignee</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'consignee' %}"><i class="fa fa-th-large "></i> <span>Consignees List</span></a></li>
+                                        <li><a href="{% url 'add_consignee' %}"><i class="fa fa-plus-square-o "></i> <span>Add Consignee</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-truck "></i> <span>Drivers</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'driver' %}"><i class="fa fa-truck "></i> <span>Drivers List</span></a></li>
+                                        <li><a href="{% url 'add_driver' %}"><i class="fa fa-plus-square-o "></i> <span>Add Driver</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-wrench "></i> <span>Equipment</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'equipment' %}"><i class="fa fa-wrench "></i> <span>Equipments List</span></a></li>
+                                        <li><a href="{% url 'add_equipments' %}"><i class="fa fa-plus-square-o "></i> <span>Add Equipment</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-check-square-o "></i> <span>Dispatches</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'dispatch' %}"><i class="fa fa-check-square-o "></i> <span>Dispatches List</span></a></li>
+                                        <li><a href="{% url 'add_dispatch' %}"><i class="fa fa-plus-square-o "></i> <span>Add Dispatch</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-file "></i> <span>Report</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'driver_pay_summary' %}"><i class="fa fa-list-alt "></i> <span>Driver Pay Summary</span></a></li>
+                                        <li><a href="{% url 'dispatch_pay_summary' %}"><i class="fa fa-list-alt "></i> <span>Dispatch Pay Summary</span></a></li>
+                                        <li><a href="{% url 'driver_pay_report' %}"><i class="fa fa-file-archive-o "></i> <span>Driver Pay Report</span></a></li>
+                                        <li><a href="{% url 'customer_revenue_report' %}"><i class="fa fa-file-code-o "></i> <span>Customer Revenue Report</span></a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="has-children ">
+                                    <a href="# "><i class="fa fa-user-secret "></i> <span>Users</span> <i class="fa fa-angle-right arrow "></i></a>
+                                    <ul class="child-nav ">
+                                        <li><a href="{% url 'user' %}"><i class="fa fa-bank "></i> <span>Users List</span></a></li>
+                                        <li><a href="{% url 'add_user' %}"><i class="fa fa-bell "></i> <span>Add User</span></a></li>
+                                    </ul>
+                                </li>
+                                <!-- /.side-nav -->
+                            </ul>
+                        </div>
+                        <!-- /.sidebar-nav -->
+                    </div>
+                    <!-- /.sidebar-content -->
+                </div>
+                <!-- /.left-sidebar -->
+
+                <div class="content-container ">
+                    <div class="main-page ">
+                        <div class="container-fluid ">
+                            <div class="row page-title-div ">
+                                <div class="col-md-6 ">
+                                    <h4 class="title ">Shipper <small class="ml-10 ">Details</small></h4>
+                                </div>
+                                <!-- /.col-md-6 -->
+                            </div>
+                            <!-- /.row -->
+                            <div class="row breadcrumb-div ">
+                                <div class="col-md-6 ">
+                                    <ul class="breadcrumb ">
+                                        <li><a href="{% url 'dashboard' %}"><i class="fa fa-home "></i> Home</a></li>
+                                        <li class="active ">Shippers List</li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-6 -->
+                                <div class="col-md-6 text-right ">
+                                    <a href="# "><i class="fa fa-comments "></i> Talk to us</a>
+                                    <a href="# " class="pl-20 "><i class="fa fa-cog "></i> Settings</a>
+                                </div>
+                                <!-- /.col-md-6 -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.content-container -->
+                        <section class="section ">
+                            <div class="container-fluid ">
+
+                                <div class="row ">
+                                    <div class="col-md-8 col-md-offset-2 ">
+
+                                        <!-- /.alert alert-info -->
+                                    </div>
+                                    <!-- /.col-md-12 -->
+                                </div>
+                                <!-- /.row -->
+
+                                <div class="row ">
+                                    <div class="col-md-12 col-md-offset-0 ">
+
+                                        <div class="panel ">
+                                            <div class="panel-heading ">
+                                                <div class="panel-title ">
+                                                    <div class="col-lg-6 ">
+                                                        <h2>Shippers Details</h2>
+                                                    </div>
+                                                    <div class="col-lg-6 right-side ">
+                                                        <a href="{% url 'add_shipper' %}"><button type="button " class="bg bg-success "><h5>Add Shipper</h5></button></a>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-title right-side "><input type="text " id="myInput " onkeyup="myFunction() " placeholder="Search "></div>
+                                                <script>
+                                                    function myFunction() {
+                                                        // Declare variables
+                                                        var input, filter, table, tr, td, i, txtValue;
+                                                        input = document.getElementById("myInput ");
+                                                        filter = input.value.toUpperCase();
+                                                        table = document.getElementById("myTable ");
+                                                        tr = table.getElementsByTagName("tr ");
+
+                                                        // Loop through all table rows, and hide those who don't match the search query
+                                                        for (i = 0; i < tr.length; i++) {
+                                                            td = tr[i].getElementsByTagName("td ")[0];
+                                                            if (td) {
+                                                                txtValue = td.textContent || td.innerText;
+                                                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                                                    tr[i].style.display = " ";
+                                                                } else {
+                                                                    tr[i].style.display = "none ";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                </script>
+                                            </div>
+                                            <div class="panel-body p-20 ">
+
+                                                <table id="myTable " class="display table table-striped table-bordered " cellspacing="0 " width="100% ">
+                                                    <thead>
+                                                        <tr class="header ">
+                                                            <th>Shipper Id</th>
+                                                            <th>Shipper Name</th>
+                                                            <th>Address</th>
+                                                            <th>City</th>
+                                                            <th>Zip</th>
+                                                            <th>State</th>
+                                                            <th>Country</th>
+                                                            <th>Contact</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                            <th>Ext.</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for i in ship %}
+                                                        <tr>
+                                                            <td><span class="bg bg-success "><i class="fa fa-plus-circle "></i></span>{{i.ship_id}}</td>
+                                                            <td>{{i.ship_name}}</td>
+                                                            <td>{{i.ship_addr}}</td>
+                                                            <td>{{i.ship_city}}</td>
+                                                            <td>{{i.ship_zip}}</td>
+                                                            <td>{{i.ship_state}}</td>
+                                                            <td>{{i.ship_country}}</td>
+                                                            <td>{{i.ship_contact}}</td>
+                                                            <td>{{i.ship_phone}}</td>
+                                                            <td>{{i.ship_email}}</td>
+                                                            <td>{{ship_ext}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+
+                                                <div class="col-md-12 mt-15 src-code ">
+                                                    <pre class="language-html "><code class="language-html ">
+&lt;table id="example " class="display table table-striped table-bordered " cellspacing="0 " width="100% "&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Position&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Position&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+    &lt;td&gt;Tiger Nixon&lt;/td&gt;
+    &lt;td&gt;System Architect&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Garrett Winters&lt;/td&gt;
+    &lt;td&gt;Accountant&lt;/td&gt;
+&lt;/tr&gt;
+...
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- ========== JS ========== --&gt;
+&lt;script&gt;
+$(function($) {
+$('#example').DataTable();
+});
+&lt;/script&gt;
+                                            </code></pre>
+                                                </div>
+                                                <!-- /.col-md-12 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.main-wrapper -->
+
+    <!-- ========== COMMON JS FILES ========== -->
+    <script src="../../static/Dashboard/js/jquery/jquery-2.2.4.min.js "></script>
+    <script src="../../static/Dashboard/js/jquery-ui/jquery-ui.min.js "></script>
+    <script src="../../static/Dashboard/js/bootstrap/bootstrap.min.js "></script>
+    <script src="../../static/Dashboard/js/pace/pace.min.js "></script>
+    <script src="../../static/Dashboard/js/lobipanel/lobipanel.min.js "></script>
+    <script src="../../static/Dashboard/js/iscroll/iscroll.js "></script>
+
+    <!-- ========== PAGE JS FILES ========== -->
+    <script src="../../static/Dashboard/js/prism/prism.js "></script>
+    <script src="../../static/Dashboard/js/waypoint/waypoints.min.js "></script>
+    <script src="../../static/Dashboard/js/counterUp/jquery.counterup.min.js "></script>
+    <script src="../../static/Dashboard/js/amcharts/amcharts.js "></script>
+    <script src="../../static/Dashboard/js/amcharts/serial.js "></script>
+    <script src="../../static/Dashboard/js/amcharts/pie.js "></script>
+    <script src="../../static/Dashboard/js/amcharts/plugins/export/export.min.js "></script>
+    <link rel="stylesheet " href="../../static/Dashboard/js/amcharts/plugins/export/export.css " type="text/css " media="all " />
+    <script src="../../static/Dashboard/js/amcharts/themes/light.js "></script>
+    <script src="../../static/Dashboard/js/toastr/toastr.min.js "></script>
+    <script src="../../static/Dashboard/js/icheck/icheck.min.js "></script>
+    <script src="../../static/Dashboard/js/bootstrap-tour/bootstrap-tour.js "></script>
+
+    <!-- ========== THEME JS ========== -->
+    <script src="../../static/Dashboard/js/main.js "></script>
+    <script src="../../static/Dashboard/js/production-chart.js "></script>
+    <script src="../../static/Dashboard/js/traffic-chart.js "></script>
+    <script src="../../static/Dashboard/js/bar-chart.js "></script>
+    <script src="../../static/Dashboard/js/pie-chart.js "></script>
+    <script src="../../static/Dashboard/js/task-list.js "></script>
+
+    <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
+</body>
+
+<!-- Mirrored from Worksbot-admin.themesease.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Feb 2021 14:45:17 GMT -->
+
+</html>
